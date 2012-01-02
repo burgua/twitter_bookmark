@@ -1,0 +1,13 @@
+﻿{
+  "name": "Twitter Bookmark",
+  "version": "0.1",
+  "description": "Bookmark for twitter Web-Client",
+  "content_scripts" : [{
+    "matches": ["https://twitter.com/*"],
+    "css" : ["styles/styles.css"],
+    "js" :  [ "src/jquery.js" , "src/scrollTo.js", "src/code.js"]
+  }],
+  "permissions" : [
+    "https://twitter.com/*"
+  ]
+}

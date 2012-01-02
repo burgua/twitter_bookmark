@@ -1,0 +1,21 @@
+#tb-bookmark, #tb-goto-bookmark {
+  background-color: red;
+  position: fixed;
+  z-index: 1000;
+  min-width: 40px;
+  min-height: 40px;
+  top: 0px;
+}
+
+#tb-bookmark {
+  left: 0px;
+}
+
+#tb-goto-bookmark {
+  right: 0px;
+}
+
+.tb-marked-tweet {
+  background-color: #cfcfcf;
+}
+
