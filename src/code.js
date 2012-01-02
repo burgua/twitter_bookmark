@@ -1,6 +1,7 @@
 $(function(){
 
   var marked = "tb-marked-tweet";
+  var lastTweetId = null;
 
   // init db, 1 Mb
   // FAIL HERE?????
@@ -26,27 +27,34 @@ $(function(){
   // get last extracted id
   // real crapy query ((
   sql ('SELECT * FROM bookmarks ORDER by id DESC LIMIT 1', function (results) {
-    var lastTweetId = results.rows.item(0).tweetid;
-    lastTweetId && decorateLastBookmark ( $('[data-tweet-id="'+lastTweetId+'"]') );
+    lastTweetId = results.rows.item(0).tweetid;
+    lastTweetId && decorateLastBookmark ();
   })
 
   // mark last read tweet
   function decorateLastBookmark (el) {
     $("."+marked).removeClass(marked);
-    el.addClass(marked);
+    $('[data-tweet-id="'+lastTweetId+'"]').addClass(marked)
   }
 
   // create bookmark element and handler for click
-  $("#tb-bookmark").click(function(){
+  $("#tb-bookmark").click(function(e){
+    e.preventDefault();
     var currentTweet = $(".tweet").first();
-    var tweetId = currentTweet.attr("data-tweet-id");
-    sql ("INSERT INTO bookmarks (tweetid) VALUES ("+tweetId+") ");
-    decorateLastBookmark ( currentTweet ) ;
+    lastTweetId = currentTweet.attr("data-tweet-id");
+    sql ("INSERT INTO bookmarks (tweetid) VALUES ("+lastTweetId+") ");
+    decorateLastBookmark () ;
+    return false;
   });
 
-  $("#tb-goto-bookmark").click(function(){
-    $.scrollTo($("."+marked).first());
+  $("#tb-goto-bookmark").click(function(e){
+    e.preventDefault();
+    var lastTweet = $("."+marked).first();
+    lastTweet && $.scrollTo(lastTweet.position().top-40);
+    return false;
   });
+
+  setInterval(decorateLastBookmark, 1000);
 
 });
 
