@@ -1,21 +1,15 @@
-#tb-bookmark, #tb-goto-bookmark {
-  background-color: red;
-  position: fixed;
-  z-index: 1000;
-  min-width: 40px;
-  min-height: 40px;
-  top: 0px;
+#tb-bookmark a, #tb-goto-bookmark a{
+  color: #b49912;
 }
 
-#tb-bookmark {
-  left: 0px;
-}
-
-#tb-goto-bookmark {
-  right: 0px;
+#tb-bookmark a:hover, #tb-goto-bookmark a:hover {
+  color: #e6fe0e;
 }
 
 .tb-marked-tweet {
-  background-color: #cfcfcf;
+  background-color: #efefef;
 }
 
+.larry-topbar {
+  display: none;
+}
