@@ -32,9 +32,13 @@ $(function(){
   })
 
   // mark last read tweet
-  function decorateLastBookmark (el) {
+  function decorateLastBookmark () {
     $("."+marked).removeClass(marked);
-    $('[data-tweet-id="'+lastTweetId+'"]').addClass(marked)
+    var elem = $('[data-tweet-id="'+lastTweetId+'"]');
+    if (elem.length) {
+      elem.addClass(marked);
+      $('#tb-goto-bookmark a').html("Goto Bookmark (*)");
+    }
   }
 
   // create bookmark element and handler for click
@@ -50,7 +54,13 @@ $(function(){
   $("#tb-goto-bookmark").click(function(e){
     e.preventDefault();
     var lastTweet = $("."+marked).first();
-    lastTweet && $.scrollTo(lastTweet.position().top-40);
+    if (lastTweet.length) {
+      $.scrollTo(lastTweet.position().top, {duration: 300});
+    }
+    else {
+      // it's dirty (
+      alert('No bookmark found');
+    }
     return false;
   });
 
