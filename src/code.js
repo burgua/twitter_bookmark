@@ -32,7 +32,7 @@ $(function(){
   })
 
   // mark last read tweet
-  function decorateLastBookmark () {
+  function decorateLastBookmark() {
     $("."+marked).removeClass(marked);
     var elem = $('[data-tweet-id="'+lastTweetId+'"]');
     if (elem.length) {
@@ -65,6 +65,14 @@ $(function(){
   });
 
   setInterval(decorateLastBookmark, 1000);
+
+  // auto expand new tweets
+
+  function liveFeedWithoutCounter() {
+    $('.new-tweets-bar.js-new-tweets-bar').trigger('click');
+  };
+
+  setInterval(liveFeedWithoutCounter, 5000);
 
 });
 

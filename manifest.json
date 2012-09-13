@@ -1,6 +1,7 @@
 ﻿{
   "name": "Twitter Bookmark",
-  "version": "0.1",
+  "version": "0.2",
+  "manifest_version" : 2,
   "description": "Bookmark for twitter Web-Client",
   "content_scripts" : [{
     "matches": ["https://twitter.com/*"],
