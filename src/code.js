@@ -21,8 +21,8 @@ $(function(){
 
   // create control UI
   $("#global-actions").
-    append($("<li><a href='#'>Set Bookmark</a></li>").attr("id","tb-bookmark")).
-    append($("<li><a href='#'>Goto Bookmark</a></li>").attr("id","tb-goto-bookmark"));
+    append($("<li><a href='#'>Set</a></li>").attr("id","tb-bookmark")).
+    append($("<li><a href='#'>Goto</a></li>").attr("id","tb-goto-bookmark"));
 
   // get last extracted id
   // real crapy query ((
@@ -37,7 +37,7 @@ $(function(){
     var elem = $('[data-tweet-id="'+lastTweetId+'"]');
     if (elem.length) {
       elem.addClass(marked);
-      $('#tb-goto-bookmark a').html("Goto Bookmark (*)");
+      $('#tb-goto-bookmark a').html("Goto(*)");
     }
   }
 
@@ -67,12 +67,12 @@ $(function(){
   setInterval(decorateLastBookmark, 1000);
 
   // auto expand new tweets
-
+  /*
   function liveFeedWithoutCounter() {
     $('.new-tweets-bar.js-new-tweets-bar').trigger('click');
   };
 
   setInterval(liveFeedWithoutCounter, 5000);
-
+  */
 });
 
