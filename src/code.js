@@ -46,7 +46,7 @@ $(function(){
   // create bookmark element and handler for click
   $("#tb-bookmark").click(function(e){
     e.preventDefault();
-    var currentTweet = $(".tweet").first();
+    var currentTweet = $(".tweet").not('.promoted-tweet').first()
     lastTweetId = currentTweet.attr("data-tweet-id");
     sql ("INSERT INTO bookmarks (tweetid) VALUES ("+lastTweetId+") ");
     decorateLastBookmark () ;
