@@ -60,7 +60,6 @@ $(function(){
       $.scrollTo(lastTweet.position().top, {duration: 300});
     }
     else {
-      // it's dirty (
       alert('No bookmark found');
     }
     return false;
